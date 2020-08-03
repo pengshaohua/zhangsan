@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="admin">
+        <a href="login.html">请登录</a>
+        <a href="registry.html">请注册</a>
+    </div>
+    <div class="login" style="display:none;">
+        <span></span>,欢迎光临!
+        <a href="javascript:;" id="close">退出</a>
+    </div>
+    <script>
+        const admin = document.querySelector('.admin');
+        const login = document.querySelector('.login');
+        const spanname = document.querySelector('span');
+
+        const close = document.querySelector('#close');
+        //如果存在本地存储xingming,代表用户存在
+        if (localStorage.getItem('xingming')) {
+            login.style.display = 'block';
+            admin.style.display = 'none';
+            let user = localStorage.getItem('xingming');//获取本地存储。
+            spanname.innerHTML = user;
+        }
+
+        close.onclick = function () {
+            login.style.display = 'none';
+            admin.style.display = 'block';
+            localStorage.removeItem('xingming');//删除本地存储
+        }
+    </script>
+</body>
+
+</html>
